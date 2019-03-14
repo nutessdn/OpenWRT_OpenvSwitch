@@ -12,7 +12,7 @@ Existem outros roteadores que podem ser configurados de maneira semelhante, por�
 
 _(Dispositivos com menos de 4MB de flash e/ou menos de 32MB de RAM sofrem com limitações de usabilidade, extensibilidade e instabilidade)_
 
-##Cuidado
+###Cuidado
 
 
 :fire: :skull:Este procedimento de "reflashing" em um roteador consequentemente anulará a garantia e poderá torná-lo "bricked", sendo assim irrecuperável. **Continue por sua conta e risco...**:fire: :skull:
