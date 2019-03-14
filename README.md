@@ -12,7 +12,7 @@ Existem outros roteadores que podem ser configurados de maneira semelhante, por�
 
 _(Dispositivos com menos de 4MB de flash e/ou menos de 32MB de RAM sofrem com limitações de usabilidade, extensibilidade e instabilidade)_
 
-###Cuidado
+### Cuidado
 
 
 :fire: :skull:Este procedimento de "reflashing" em um roteador consequentemente anulará a garantia e poderá torná-lo "bricked", sendo assim irrecuperável. **Continue por sua conta e risco...**:fire: :skull:
@@ -28,12 +28,12 @@ Conecte a uma porta LAN um dispositivo que possa se comunicar usando SSH. Defina
 
 _Para Compilar a firmware foi utilizado o Ubuntu 17.04._
 
-####Clonando o repositório do OpenWRT
+#### Clonando o repositório do OpenWRT
 No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do site do OpenWRT)_
 
 **$ git clone https://github.com/openwrt/openwrt.git**
 
-####Instalando as dependências
+#### Instalando as dependências
 
       sudo apt-get update
       sudo apt-get install git-core build-essential libssl-dev      libncurses5-dev unzip gawk zlib1g-dev
@@ -56,4 +56,4 @@ Alrere a opção selecionanda para o hardware utilizado( selecione a opção TP-
 
 
 
-#Em Construção ...
+# Em Construção ...
