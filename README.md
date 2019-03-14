@@ -40,7 +40,7 @@ No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do 
       sudo apt-get install subversion mercurial
       sudo apt-get install gcc-multilib flex gettext
 
-#### Atualizando Feeds
+#### Atualizando Feeds  
 
       cd openwrt
       ./scripts/feeds update -a
@@ -51,6 +51,9 @@ No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do 
       make MenuConfig
 
 Alrere a opção selecionanda para o hardware utilizado( selecione a opção TP-Link TL-WR1043N / ND  para TP-Link TL-WR1043ND Hardware Version 2.1)
+
+![passo 1 ](https://github.com/nutessdn/OpenWRT_OpenvSwitch/imagens/passo1.png)
+
 
 
 #Em Construção ...
