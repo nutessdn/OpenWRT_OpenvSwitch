@@ -52,7 +52,7 @@ No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do 
 
 Alrere a opção selecionanda para o hardware utilizado( selecione a opção TP-Link TL-WR1043N / ND  para TP-Link TL-WR1043ND Hardware Version 2.1)
 
-![passo 1 ](https://github.com/nutessdn/OpenWRT_OpenvSwitch/imagens/passo1.png)
+![Passo 01](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo1.png)
 
 
 
