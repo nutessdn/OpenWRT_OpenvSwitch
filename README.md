@@ -13,11 +13,9 @@ Existem outros roteadores que podem ser configurados de maneira semelhante, por�
 _(Dispositivos com menos de 4MB de flash e/ou menos de 32MB de RAM sofrem com limitações de usabilidade, extensibilidade e instabilidade)_
 
 ##Cuidado
-:no_entry:
+
 
 :fire: :skull:Este procedimento de "reflashing" em um roteador consequentemente anulará a garantia e poderá torná-lo "bricked", sendo assim irrecuperável. **Continue por sua conta e risco...**:fire: :skull:
-
-:no_entry:
 
 
 ### Transformando o roteador para OpenWRT
@@ -52,7 +50,7 @@ No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do 
 
       make MenuConfig
 
-Alrere a opção selecionanda para o hardware utilizado(Se estiver selecionanda a opção TP-Link TL-WR1043N / ND mude-a para TP-Link TL-WR1043ND Hardware Version 2.1)
+Alrere a opção selecionanda para o hardware utilizado( selecione a opção TP-Link TL-WR1043N / ND  para TP-Link TL-WR1043ND Hardware Version 2.1)
 
 
 #Em Construção ...
