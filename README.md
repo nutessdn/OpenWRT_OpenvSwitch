@@ -162,6 +162,88 @@ _Com isso a comunicação switch/controlador se dará através de uma rede separ
 
 Este será o novo arquivo de rede, copie e cole em  _/etc/config/network_:
 
+          config interface 'loopback'
+                  option ifname 'lo'
+                  option proto 'static'
+                  option ipaddr '127.0.0.1'
+                  option netmask '255.0.0.0'
+
+          config globals 'globals'
+          	option ula_prefix 'fd7d:e6fd:cd37::/48'
+
+          #Porta 5 com IP estatico para acessar os ssh e para o controlador_
+
+          config interface 'lan'
+                  option ifname 'eth0'
+                  option force_link '1'
+                  option type 'bridge'
+                  option proto 'static'
+                  option ipaddr '192.168.2.1'
+                  option netmask '255.255.255.0'
+                  option defaultroute '1'
+                  option gateway '192.168.2.2'
+                  option dns '8.8.8.8'
+
+          config switch
+                  option name 'switch0'
+                  option reset '1'
+                  option enable_vlan '1'
+
+          config switch_vlan
+                  option device 'switch0'
+                  option vlan '5'
+                  option ports '5 0'
+
+          config switch_vlan
+                  option device 'switch0'
+                  option vlan '1'
+                  option ports '0t 1'
+
+          config switch_vlan
+                  option device 'switch0'
+                  option vlan '2'
+                  option ports '0t 2'
+
+          config switch_vlan
+                  option device 'switch0'
+                  option vlan '3'
+                  option ports '0t 3'
+
+          config switch_vlan
+                  option device 'switch0'
+                  option vlan '4'
+                  option ports '0t 4'
+
+          config interface
+                  option ifname 'eth0.1'
+                  option proto 'static'
+                  option ipv6 '0'
+
+          config interface
+                  option ifname 'eth0.2'
+                  option proto 'static'
+                  option ipv6 '0'
+
+          config interface
+                  option ifname 'eth0.3'
+                  option proto 'static'
+                  option ipv6 '0'
+
+          config interface
+                  option ifname 'eth0.4'
+                  option proto 'static'
+                  option ipv6 '0'
+
+          config interface
+                  option ifname 'br-lan'
+                  option proto 'static'
+
+
+### Configure o Open vSwitch
+
+Agora é a hora de configurar o Open vSwitch como uma bridge _br0_, adicionar portas vlans e configurando o OpenFlow para comunicar com o controlador:
+
+
 
 
 # Em Construção ...
