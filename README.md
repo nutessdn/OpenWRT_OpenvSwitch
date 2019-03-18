@@ -12,7 +12,7 @@ Existem outros roteadores que podem ser configurados de maneira semelhante, por�
 
 _(Dispositivos com menos de 4MB de flash e/ou menos de 32MB de RAM sofrem com limitações de usabilidade, extensibilidade e instabilidade)_
 
-### Cuidado
+### Cuidado!
 
 
 :fire: :skull:Este procedimento de "reflashing" em um roteador consequentemente anulará a garantia e poderá torná-lo "bricked", sendo assim irrecuperável. **Continue por sua conta e risco...**:fire: :skull:
@@ -54,6 +54,20 @@ Alrere a opção selecionanda para o hardware utilizado( selecione a opção TP-
 
 ![Passo 01](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo1.png)
 
+Agora selecione **Kernel Modules -> kmod-tun:**
 
+![Passo2](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo2.png)
+
+**Exit** volte para tela inicial, vá para **Network -> Open vSwitch** e inclua a opção selecionada utilizando _"Y"_.
+
+**Save**  depois **Exit**:
+
+![Passo3](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo.png)
+
+Isto deve demorar um pouco...
+
+        make kernel_menuconfig
+
+Quando concluir o processo aparecerá outro menu. Vá para **Networking support -> Networking options** e selecione **Hierarchical Token Bucket (HTB):**
 
 # Em Construção ...
