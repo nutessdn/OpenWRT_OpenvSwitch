@@ -58,16 +58,29 @@ Agora selecione **Kernel Modules -> kmod-tun:**
 
 ![Passo2](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo2.png)
 
-**Exit** volte para tela inicial, vá para **Network -> Open vSwitch** e inclua a opção selecionada utilizando _"Y"_.
+**Exit** volte para tela inicial, vá para **Network -> Open vSwitch** e inclua a opção selecionada utilizando _"Y"_:
+![Passo3](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo3.png)
 
 **Save**  depois **Exit**:
 
-![Passo3](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo.png)
+![Passo3](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/salvar.png)
 
 Isto deve demorar um pouco...
 
         make kernel_menuconfig
 
-Quando concluir o processo aparecerá outro menu. Vá para **Networking support -> Networking options** e selecione **Hierarchical Token Bucket (HTB):**
+Quando concluir o processo aparecerá outro menu. Vá para **Networking support -> Networking options** e inclua a opção **Hierarchical Token Bucket (HTB):**
+
+![Passo4](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo4.png)
+
+#### Run Make
+
+Este processo pode demorar algumas horas...
+
+        make
+
+#### Copy Image
+
+
 
 # Em Construção ...
