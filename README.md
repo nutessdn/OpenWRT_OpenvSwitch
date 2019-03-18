@@ -4,7 +4,7 @@ Este tutorial tem como objetivo o uso do OpenWRT em um roteador comum, fazendo o
 proporcionando o uso do OpenFlow SDN, que proporciona o desacoplamento entre os dados e o Plano de coontrole,
 permitindo assim o uso de diversos controladores e apps de gerência para realizar o controle.
 
-#### Hardware necessário
+### Hardware necessário
 
 Para realização deste tutorial será necessário o uso de um roteador doméstico modelo: TP-Link TL-WR1043ND versão 2.1 que será regravado com uma firmware [OpenWRT](https://g.co/kgs/EHYNN2) rodando o Open VSwitch que utiliza o OpenFlow.
 
@@ -12,41 +12,41 @@ Existem outros roteadores que podem ser configurados de maneira semelhante, por�
 
 _(Dispositivos com menos de 4MB de flash e/ou menos de 32MB de RAM sofrem com limitações de usabilidade, extensibilidade e instabilidade)_
 
-### Cuidado!
+## Cuidado!
 
 
 :fire: :skull:Este procedimento de "reflashing" em um roteador consequentemente anulará a garantia e poderá torná-lo "bricked", sendo assim irrecuperável. **Continue por sua conta e risco...**:fire: :skull:
 
 
-#### Transformando o roteador para OpenWRT
+### Transformando o roteador para OpenWRT
 
 Faça as configurações básicas para iniciar o processo:
 
 Conecte a uma porta LAN um dispositivo que possa se comunicar usando SSH. Defina um ip estático 192.168.1.2 com mascara 255.255.255.0 (ou use DHCP), agora conecte-se com SSH em 192.168.1.1 (gateway padrão). Defina uma senha segura para o root.
 
-#### Compilar o OpenWRT com uma imagem do Open vSwitch
+### Compilar o OpenWRT com uma imagem do Open vSwitch
 
 _Para Compilar a firmware foi utilizado o Ubuntu 17.04._
 
-#### Clonando o repositório do OpenWRT
+### Clonando o repositório do OpenWRT
 No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do site do OpenWRT)_
 
 **$ git clone https://github.com/openwrt/openwrt.git**
 
-#### Instalando as dependências
+### Instalando as dependências
 
       sudo apt-get update
       sudo apt-get install git-core build-essential libssl-dev      libncurses5-dev unzip gawk zlib1g-dev
       sudo apt-get install subversion mercurial
       sudo apt-get install gcc-multilib flex gettext
 
-#### Atualizando Feeds  
+### Atualizando Feeds  
 
       cd openwrt
       ./scripts/feeds update -a
       ./scripts/feeds install -a
 
-#### Make MenuConfig
+### Make MenuConfig
 
       make MenuConfig
 
@@ -73,13 +73,13 @@ Quando concluir o processo aparecerá outro menu. Vá para **Networking support 
 
 ![Passo4](https://raw.githubusercontent.com/nutessdn/OpenWRT_OpenvSwitch/master/imagens/passo4.png)
 
-#### Run Make
+### Run Make
 
 Este processo pode demorar algumas horas...
 
         make
 
-#### Deseja autenticação Wi-Fi?
+### Deseja autenticação Wi-Fi?
 
 **No nosso exemplo não se faz necessária a utilização de Wi-Fi**
 
@@ -87,7 +87,7 @@ Na contrução padrão do OpenWRT com Open vSwitch não permite a autenticação
 https://forum.openwrt.org/viewtopic.php?id=59129
 
 
-#### Copy Image
+### Copy Image
 
 Vá até o diretório onde os arquivos são:
 
@@ -103,7 +103,7 @@ Use o __SCP__ para copiar o arquivo para o roteador:
       scp ./openwrt-ar71xx-generic-tl-wr1043nd-v2-squashfs-sysupgrade.bin USERNAME@192.168.1.1:tmp
 
 
-#### Upgrade
+### Upgrade
 
 _Nota: É aconselhado fazer o backup das configurações **etc** primeiro._
 
@@ -112,11 +112,11 @@ Certo que a imagem realmente está no diretório _/tmp_ do TP-Link, podemos usar
         sysupgrade -v /tmp/openwrt-ar71xx-generic-tl-wr1043nd-v2-squashfs-sysupgrade.bin
 
 
-#### Configure o OpenWRT
+### Configure o OpenWRT
 
 O OpenWRT necessita ser configurado para trabalhar junto com o Open vSwitch.
 
-#### Dropbear (servidor SSH)
+### Dropbear (servidor SSH)
 
 Configure o Dropbear para escutar a interface WAN e também a interface LAN. Com isso temos um método adicional para acessar e administrar o dispositivo, reguardado de um eventual bloqueio.  
 _
@@ -138,7 +138,7 @@ Adicione estas linhas em _/etc/config/dropbear_ para WAN, o arquivo completo é:
           option Port '22'
           option Interface 'wan'
 
-#### Firewall
+### Firewall
 
 O firewall (_/etc/config/firewall_) deve permitir o encaminhamento:
 
@@ -148,7 +148,7 @@ O firewall (_/etc/config/firewall_) deve permitir o encaminhamento:
         option output           ACCEPT
         option forward          ACCEPT
 
-#### Network
+### Network
 
 Faça o backup das configurações de rede:
 
