@@ -171,7 +171,7 @@ Este será o novo arquivo de rede, copie e cole em  _/etc/config/network_:
           config globals 'globals'
           	option ula_prefix 'fd7d:e6fd:cd37::/48'
 
-          #Porta 5 com IP estatico para acessar os ssh e para o controlador_
+          #Porta 5 com IP estatico para acessar os ssh e para o controlador
 
           config interface 'lan'
                   option ifname 'eth0'
@@ -291,6 +291,12 @@ Edite o arquivo _/etc/profile_ a adicione essas linhas:
         alias offlows='ovs-ofctl dump-flows br-lan'
         alias ofports='ovs-ofctl dump-ports br-lan'
 
+
+
+
+### Concluindo
+
+Com isso temos uma estrutura física que nos permite a utilização do Open vSwitch em um dispositivo dado como de uso doméstico, pessoal e fácil acesso, aplicando o protocolo OpenFlow e possibilitando o uso de qualquer controlador remoto, proporcionando assim um gerenciamento da rede por aplicativos.
 
 
 # Em Construção ...
