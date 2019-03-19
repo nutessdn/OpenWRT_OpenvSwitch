@@ -26,7 +26,7 @@ Conecte a uma porta LAN um dispositivo que possa se comunicar usando SSH. Defina
 
 ### Compilar o OpenWRT com uma imagem do Open vSwitch
 
-    _Para Compilar a firmware foi utilizado o Ubuntu 17.04._
+_Para Compilar a firmware foi utilizado o Ubuntu 17.04._
 
 ### Clonando o repositório do OpenWRT
 No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do site do OpenWRT)_
@@ -254,7 +254,7 @@ Feito isto, edite o arquivo  _/etc/rc.local_  inserindo os comandos à seguir. A
           ovs-vsctl --no-wait init
           ovs-vswitchd --pidfile --detach
 
-Agora iremos configurar o OpenWrt para trabalhar com o OpenVSwitch. Mas antes disso, salve e reinicie o roteador através do comando
+Agora iremos configurar o OpenWrt para trabalhar com o OpenVSwitch. Mas antes disso, salve e reinicie o roteador através do comando:
 
         reboot
 
@@ -298,5 +298,12 @@ Edite o arquivo _/etc/profile_ a adicione essas linhas:
 
 Com isso temos uma estrutura física que nos permite a utilização do Open vSwitch em um dispositivo dado como de uso doméstico, pessoal e fácil acesso, aplicando o protocolo OpenFlow e possibilitando o uso de qualquer controlador remoto, proporcionando assim um gerenciamento da rede por aplicativos.
 
+---
 
+#### fontes
+
+[OpenWRT](https://openwrt.org/) |
+[link1](https://blog.ljdelight.com/turning-tp-link-wr1043ndv2-1-router-into-openflow-enabled-switch/)|
+[link2](https://blog.ljdelight.com/turning-tp-link-wr1043ndv2-1-router-into-openflow-enabled-switch/)|
+[link3](https://github.com/r0bertson/openwrt-wr1043nd)
 # Em Construção ...
