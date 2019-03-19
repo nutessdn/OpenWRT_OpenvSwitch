@@ -1,7 +1,7 @@
 # OpenWRT_OpenvSwitch
 
 Este tutorial tem como objetivo o uso do OpenWRT em um roteador comum, fazendo o uso do Open vSwitch
-proporcionando o uso do OpenFlow SDN, que proporciona o desacoplamento entre os dados e o Plano de coontrole,
+permitindo o uso do OpenFlow SDN, que proporciona o desacoplamento entre os dados e o Plano de controle,
 permitindo assim o uso de diversos controladores e apps de gerência para realizar o controle.
 
 ### Hardware necessário
@@ -26,7 +26,7 @@ Conecte a uma porta LAN um dispositivo que possa se comunicar usando SSH. Defina
 
 ### Compilar o OpenWRT com uma imagem do Open vSwitch
 
-_Para Compilar a firmware foi utilizado o Ubuntu 17.04._
+    _Para Compilar a firmware foi utilizado o Ubuntu 17.04._
 
 ### Clonando o repositório do OpenWRT
 No host de compilação, clone o OpenWRT: _(obs: no GitHub, não diretamente do site do OpenWRT)_
@@ -239,10 +239,57 @@ Este será o novo arquivo de rede, copie e cole em  _/etc/config/network_:
                   option proto 'static'
 
 
+Feito isto, edite o arquivo  _/etc/rc.local_  inserindo os comandos à seguir. Assim, será realizado inicialização automática do ovsdb-server(este faz o armazenamento das tabelas de fluxo) ao ligar o switch, juntamente com o estabelecimento a comunicação local e remota:
+
+          ovs-ctl start;
+          ovs-ctl stop;
+
+          ovsdb-server --remote=punix:/var/run/openvswitch/db.sock \
+                               --remote=ptcp:6640:192.168.2.1 \
+                               --private-key=db:Open_vSwitch,SSL,private_key \
+                               --certificate=db:Open_vSwitch,SSL,certificate \
+                               --bootstrap-ca-cert=db:Open_vSwitch,SSL,ca_cert \
+                               --pidfile --detach
+
+          ovs-vsctl --no-wait init
+          ovs-vswitchd --pidfile --detach
+
+Agora iremos configurar o OpenWrt para trabalhar com o OpenVSwitch. Mas antes disso, salve e reinicie o roteador através do comando
+
+        reboot
+
+
 ### Configure o Open vSwitch
 
-Agora é a hora de configurar o Open vSwitch como uma bridge _br0_, adicionar portas vlans e configurando o OpenFlow para comunicar com o controlador:
+Agora é a hora de configurar o Open vSwitch como uma bridge _br0_, adicionar portas vlans pre-definidas e configurar o OpenFlow para comunicar com o controlador.
 
+Digite os comandos no terminal, sendo _br0_ o nome da bridge e o IP:porta referente a maquina onde o controlador irá rodar. Leve em consideração que a porta utilizada pode variar de um controlador para outro, portanto procure na documentação qual a porta utilizada pelo controlador desejado.
+
+        ovs-vsctl add-br br0
+        ovs-vsctl add-port br0 eth0.1 -- set interface eth0.1 ofport_request=1
+        ovs-vsctl add-port br0 eth0.2 -- set interface eth0.2 ofport_request=2
+        ovs-vsctl add-port br0 eth0.3 -- set interface eth0.3 ofport_request=3
+        ovs-vsctl add-port br0 eth0.4 -- set interface eth0.4 ofport_request=4
+        ovs-vsctl set-controller br0 tcp:192.168.2.2:6653
+
+Por fim, podemos ainda setar alguns atalhos para facilitar no uso de alguns comandos
+Edite o arquivo _/etc/profile_ a adicione essas linhas:
+
+**OpenWRT Network Commands:**
+
+        alias nwr='/etc/init.d/network restart'
+
+**Open vSwitch Commands:**
+
+        alias ovshow='ovs-vsctl show'
+        alias ovmacs='ovs-appctl fdb/show br-lan'
+        alias ovrestart='/etc/init.d/openvswitch restart'
+
+**Open vSwitch OpenFlow Commands:**
+
+        alias ofshow='ovs-ofctl show br-lan'
+        alias offlows='ovs-ofctl dump-flows br-lan'
+        alias ofports='ovs-ofctl dump-ports br-lan'
 
 
 
